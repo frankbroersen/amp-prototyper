@@ -87,8 +87,14 @@ module.exports = [
       log: 'Update relative URLs in CSS.',
       actionType: 'replace',
       selector: 'style',
-      regex: 'url\\(["\']?((?!http(s?)(?!data:)[^\)^"^\']*)["\']?\\)',
+      regex: 'url\\(["\']?((?!http(s?))[^\)^"^\']*)["\']?\\)',
       replace: 'url("$HOST/$1")',
+    }, {
+      log: 'Remove url from data links',
+      actionType: 'replace',
+      selector: 'style',
+      regex: '$HOSTdata:image',
+      replace: 'data:image',
     }],
   },
   {
